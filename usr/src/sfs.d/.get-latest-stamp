@@ -1,0 +1,4 @@
+#!/bin/sh
+
+: "${release_url:=https://packages.clickhouse.com/deb/dists/stable/Release}"
+date --date="$(curl -ISfgs "$release_url" | grep -i ^last-modified: | cut -f2- -d,)" +%s
